@@ -5,7 +5,6 @@ var my_config = {
 	"use_VP9": false,
 	"use_5.1": true,
 	"set_max_bitrate": true,
-        "use_heaac-5.1": false,
 }
 
 function repr(obj) {
@@ -36,41 +35,61 @@ request.send(null);
 var cadmium_src = request.responseText;
 
 function get_profile_list() {
-	 custom_profiles = [
-			
-                "playready-h264mpl30-dash",
-		"playready-h264mpl31-dash",
-		"playready-h264mpl40-dash",
-
+	custom_profiles = [
+		"playready-h264mpl30-dash",
+                "playready-h264mpl31-dash",
+                "playready-h264mpl40-dash",
                 "h264mpl30-dash-playready-prk-qc",
-	        "h264mpl31-dash-playready-prk-qc",
-	        "h264mpl40-dash-playready-prk-qc",
+                "h264mpl31-dash-playready-prk-qc",
+                "h264mpl40-dash-playready-prk-qc",
+                "playready-h264hpl22-dash",
+                "playready-h264hpl30-dash",
+                "playready-h264hpl31-dash",
+                "playready-h264hpl40-dash",
+                "h264hpl22-dash-playready-live",
+                "h264hpl30-dash-playready-live",
+                "h264hpl31-dash-playready-live",
+                "h264hpl40-dash-playready-live",
+
 
 		"hevc-main10-L30-dash-cenc",
-		"hevc-main10-L31-dash-cenc",
-		"hevc-main10-L40-dash-cenc",
-		"hevc-main10-L50-dash-cenc",
-		"hevc-main10-L51-dash-cenc",
-
-		"hevc-main10-L30-dash-cenc-live",
-		"hevc-main10-L31-dash-cenc-live",
-		"hevc-main10-L40-dash-cenc-live",
-		"hevc-main10-L41-dash-cenc-live",
-		"hevc-main10-L50-dash-cenc-live",
-		"hevc-main10-L51-dash-cenc-live",
-
-		"hevc-main10-L30-dash-cenc-prk",
-		"hevc-main10-L31-dash-cenc-prk",
-		"hevc-main10-L40-dash-cenc-prk",
-		"hevc-main10-L41-dash-cenc-prk",
-
-		"hevc-main10-L30-dash-cenc-prk-do",
-		"hevc-main10-L31-dash-cenc-prk-do",
-		"hevc-main10-L40-dash-cenc-prk-do",
-		"hevc-main10-L41-dash-cenc-prk-do",
-		"hevc-main10-L50-dash-cenc-prk-do",
-		"hevc-main10-L51-dash-cenc-prk-do",
-
+                "hevc-main10-L31-dash-cenc",
+                "hevc-main10-L40-dash-cenc",
+                "hevc-main10-L41-dash-cenc",
+                "hevc-main10-L50-dash-cenc",
+                "hevc-main10-L51-dash-cenc",
+                "hevc-main10-L30-dash-cenc-prk",
+                "hevc-main10-L31-dash-cenc-prk",
+                "hevc-main10-L40-dash-cenc-prk",
+                "hevc-main10-L41-dash-cenc-prk",
+                "hevc-main10-L30-dash-cenc-prk-do",
+                "hevc-main10-L31-dash-cenc-prk-do",
+                "hevc-main10-L40-dash-cenc-prk-do",
+                "hevc-main10-L41-dash-cenc-prk-do",
+                "hevc-main10-L50-dash-cenc-prk-do",
+                "hevc-main10-L51-dash-cenc-prk-do",
+                "hevc-main10-L30-dash-cenc-live",
+                "hevc-main10-L31-dash-cenc-live",
+                "hevc-main10-L40-dash-cenc-live",
+                "hevc-main10-L41-dash-cenc-live",
+                "hevc-main10-L50-dash-cenc-live",
+                "hevc-main10-L51-dash-cenc-live",
+                "hevc-dv5-main10-L30-dash-cenc-prk",
+                "hevc-dv5-main10-L31-dash-cenc-prk",
+                "hevc-dv5-main10-L40-dash-cenc-prk",
+                "hevc-dv5-main10-L41-dash-cenc-prk",
+                "hevc-dv5-main10-L50-dash-cenc-prk",
+                "hevc-dv5-main10-L51-dash-cenc-prk",
+                "hevc-dv5-main10-L40-dash-cenc-prk-qc",
+                "hevc-dv5-main10-L41-dash-cenc-prk-qc",
+                "hevc-dv5-main10-L50-dash-cenc-prk-qc",
+                "hevc-dv5-main10-L51-dash-cenc-prk-qc",
+                "hevc-dv5-main10-L30-dash-cenc-prk-do",
+                "hevc-dv5-main10-L31-dash-cenc-prk-do",
+                "hevc-dv5-main10-L40-dash-cenc-prk-do",
+                "hevc-dv5-main10-L41-dash-cenc-prk-do",
+                "hevc-dv5-main10-L50-dash-cenc-prk-do",
+                "hevc-dv5-main10-L51-dash-cenc-prk-do",
                 "hevc-hdr-main10-L30-dash-cenc-prk",
                 "hevc-hdr-main10-L31-dash-cenc-prk",
                 "hevc-hdr-main10-L40-dash-cenc-prk",
@@ -91,9 +110,9 @@ function get_profile_list() {
                 "hevc-hdr-main10-L51-dash-cenc-live",
 
 		
-		
+		"heaac-2-dash",
+		"heaac-2hq-dash",
 		"ddplus-2.0-dash",
-		
 
 		"simplesdh",
 		"nflx-cmisc",
@@ -110,17 +129,11 @@ function get_profile_list() {
 	}
 
 	if (my_config["use_5.1"]) {
-		custom_profiles.push("ddplus-5.1-dash");
-                //custom_profiles.push("heaac-5.1-dash");
-		//custom_profiles.push("ddplus-5.1hq-dash");
-		custom_profiles.push("ddplus-atmos-dash");
-		
+		//custom_profiles.push("ddplus-5.1-dash");
+                custom_profiles.push("heaac-5.1-dash");
+	        //custom_profiles.push("ddplus-5.1hq-dash");
+	        //custom_profiles.push("ddplus-atmos-dash");
 	}
-
-	if (my_config["use_heaac-5.1"]) {
-		custom_profiles.push("heaac-5.1-dash");
-	}
-
 
 	return custom_profiles;
 }
@@ -155,87 +168,85 @@ eval(cadmium_src);
 
 /* netflix_max_bitrate.js */
 
-/* eslint-disable no-undef */
-let getElementByXPath = function (xpath) {
-	return document.evaluate(
-		xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null
-	).singleNodeValue;
-};
+function getElementByXPath(xpath) {
+	return document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+}
 
-let fn = function () {
-	const VIDEO_SELECT = getElementByXPath("//div[text()='Video Bitrate']") || getElementByXPath("//div[text()='Video Bitrate / VMAF']");
+function set_max_bitrate() {
+	const VIDEO_SELECT = getElementByXPath("//div[text()='Video Bitrate / VMAF']");
 	const AUDIO_SELECT = getElementByXPath("//div[text()='Audio Bitrate']");
 	const BUTTON = getElementByXPath("//button[text()='Override']");
 
-	const videoPlayer = netflix.appContext.state.playerApp.getAPI().videoPlayer;
-	if(!videoPlayer) {
-		console.log("API Not Loading!");
-		return false;
-	}
-	const player = videoPlayer.getVideoPlayerBySessionId(videoPlayer.getAllPlayerSessionIds()[0]);
-	if(!player) {
-		console.log("Video Not Loading!");
-		return false;
-	}
-	if(!player.isPlaying()) {
-		console.log("Video Not Playing!");
-		return false;
-	}
-
-	window.dispatchEvent(new KeyboardEvent('keydown', {
-		keyCode: 66,
-		ctrlKey: true,
-		altKey: true,
-		shiftKey: true,
-	}));
-
 	if (!(VIDEO_SELECT && AUDIO_SELECT && BUTTON)){
+		window.dispatchEvent(new KeyboardEvent('keydown', {
+			keyCode: 66,
+			ctrlKey: true,
+			altKey: true,
+			shiftKey: true,
+		}));
+
 		return false;
 	}
 
-	[VIDEO_SELECT, AUDIO_SELECT].forEach(function (el) {
-		let parent = el.parentElement;
+	let SELECT_LISTS = [VIDEO_SELECT, AUDIO_SELECT];
+	let result = false;
+
+	for (var index = 0; index < SELECT_LISTS.length; index++) {
+		let list = SELECT_LISTS[index];
+		let parent = list.parentElement;
+		let select = parent.querySelector('select');
+
+		if (select.disabled){
+			return false;
+		}
 
 		let options = parent.querySelectorAll('select > option');
 
-		for (var i = 0; i < options.length - 1; i++) {
-			options[i].removeAttribute('selected');
+		if (options.length == 0){
+			return false;
 		}
 
-		options[options.length - 1].setAttribute('selected', 'selected');
-	});
+		if (options.length > 1 && options[0].selected == false){
+			return false;
+		}
 
-	console.log("Video Playing!");
-	BUTTON.click();
+		for (var i = 0; i < options.length - 1; i++) {
+			options[i].selected = false;
+		}
 
-	return true;
-};
+		options[options.length - 1].selected = true;
+		result = options[options.length - 1].selected;
+	}
 
-let run = function () {
-	fn() || setTimeout(run, 100)	
-};
+	if (result){
+		console.log("max bitrate selected, closing window");
+		BUTTON.click();
+	}
+
+	return result;
+}
+
+function set_max_bitrate_run(attempts) {
+	if (!attempts) {
+		console.log("failed to select max bitrate");
+		return;
+	}
+
+	set_max_bitrate() || setTimeout(() => set_max_bitrate_run(attempts - 1), 200);
+}
 
 const WATCH_REGEXP = /netflix.com\/watch\/.*/;
 
 let oldLocation;
 
-if (window.globalOptions === undefined) {
-    try {
-        window.globalOptions = JSON.parse(document.getElementById("netflix-intl-settings").innerText);
-    } catch(e) {
-        console.error("Could not load settings:", e);
-    }
-}
-if(window.globalOptions.setMaxBitrate ) {
+if(my_config["set_max_bitrate"]) {
 	console.log("netflix_max_bitrate.js enabled");
-	//setInterval(test, 500);
 	setInterval(function () {
-		
 		let newLocation = window.location.toString();
 
 		if (newLocation !== oldLocation) {
 			oldLocation = newLocation;
-			WATCH_REGEXP.test(newLocation) && run();
+			WATCH_REGEXP.test(newLocation) && set_max_bitrate_run(10);
 		}
-  }, 500);
+	}, 500);
 }
